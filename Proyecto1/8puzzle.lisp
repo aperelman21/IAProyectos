@@ -6,6 +6,7 @@
     valorf 
     operador
 )
+;;; Hola
 
 (defun a_star (abierto)
 (cond

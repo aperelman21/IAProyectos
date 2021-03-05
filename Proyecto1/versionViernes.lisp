@@ -112,8 +112,9 @@
 (if
     (null abierto) (print 'no_hay_solucion)
     (progn (setq actual (pop abierto)) (push actual cerrado)
-    (if (equal (nodo-matriz actual) meta)(lista-solucion actual)
+    (if (equal (nodo-matriz actual) meta) (progn (print actual) (lista-solucion actual))
     (progn (gen-hijos actual)
+	    (if (> (length abierto) 500) (setq abierto (reverse (nthcdr 50 (reverse abierto)))))
     (a_star abierto))))))        
 
 
@@ -130,7 +131,7 @@
 (setq solucion '())
 (a_star abierto) solucion)
 
-(8-puzzle '(5 1 2 6 3 0 4 7 8 5))
+(8-puzzle '(4 3 6 8 7 1 0 5 2 6))
 (print solucion)
 (print (length abierto))
 (print (length cerrado))
